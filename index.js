@@ -27,9 +27,9 @@ const formatRequestLog = req => {
   const xForwardedFor = `x-forwarded-for: ${req.headers['x-forwarded-for']}`
   const connectionRemoteAddress = `connection remote-address: ${req.connection.remoteAddress}`
   const socketRemoteAddress = `socket remote-address: ${req.socket.remoteAddress}`
-  const connectionSocketRemoteAddress = `connection socket remote-address: ${(req.connection.socket.remoteAddress).split(",")[0]}`
+  const connectionSocketRemoteAddress = `connection socket remote-address: ${req.connection.socket ? (req.connection.socket.remoteAddress).split(",")[0] : null}`
 
-  return `{${headers}, ${ipAddress}, ${method}, ${body}, ${device}, ${url}, ${query}, ${xForwardedFor}, ${connectionRemoteAddress}, ${socketRemoteAddress}, ${connectionSocketRemoteAddress} }`
+  return `{${headers}, ${method}, ${body}, ${device}, ${url}, ${query}, ${xForwardedFor}, ${connectionRemoteAddress}, ${socketRemoteAddress}, ${connectionSocketRemoteAddress} }`
 }
 
 const getRandomNum = (max) => {
