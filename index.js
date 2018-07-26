@@ -24,13 +24,12 @@ const formatRequestLog = req => {
   const device = `device: ${JSON.stringify(req.device)}`
   const url = `url: ${JSON.stringify(req.originalUrl)}`
   const query = `query: ${JSON.stringify(req.query)}`
-  var ip = (req.headers['x-forwarded-for'] ||
-    req.connection.remoteAddress ||
-    req.socket.remoteAddress ||
-    req.connection.socket.remoteAddress).split(",")[0];
-  const ipAddress = `ip: ${ip}`
+  const xForwardedFor = `x-forwarded-for: ${req.headers['x-forwarded-for']}`
+  const connectionRemoteAddress = `connection remote-address: ${req.connection.remoteAddress}`
+  const socketRemoteAddress = `socket remote-address: ${req.socket.remoteAddress}`
+  const connectionSocketRemoteAddress = `connection socket remote-address: ${(req.connection.socket.remoteAddress).split(",")[0]}`
 
-  return `{${headers}, ${ipAddress}, ${method}, ${body}, ${device}, ${url}, ${query}}`
+  return `{${headers}, ${ipAddress}, ${method}, ${body}, ${device}, ${url}, ${query}, ${xForwardedFor}, ${connectionRemoteAddress}, ${socketRemoteAddress}, ${connectionSocketRemoteAddress} }`
 }
 
 const getRandomNum = (max) => {
