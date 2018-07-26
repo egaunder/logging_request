@@ -7,9 +7,7 @@ const rfs = require('rotating-file-stream')
 const path = require('path')
 const logger = require('./services/logger')
 
-const renderIndex1 = require('./public/index1')
-const renderIndex2 = require('./public/index2')
-const renderIndex3 = require('./public/index3')
+const renderIndex = require('./public/index')
 
 const app = express();
 app.use(bodyParser.json({ limit: '20mb' }))
