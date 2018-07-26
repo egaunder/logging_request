@@ -32,28 +32,42 @@ const formatRequestLog = req => {
   return `{${headers}, ${ipAddress}, ${method}, ${body}, ${device}, ${url}, ${query}}`
 }
 
+const getRandomNum = () => {
+  const num = Math.floor(Math.random() * 4 + 1)
+  return num
+}
+
+const getRandomIndex = (num) => {
+  const file = path.resolve(__dirname, './public/', `index${num}.html`)
+  return file
+}
+
 app.post('*', (req, res) => {
   console.log(req);
   logger.info(formatRequestLog(req))
-  res.end()
+  const indexFile = getRandomIndex(getRandomNum())
+  res.status(200).sendFile(indexFile)
 })
 
 app.get('*', (req, res) => {
   console.log(req);
   logger.info(formatRequestLog(req))
-  res.end()
+  const indexFile = getRandomIndex(getRandomNum())
+  res.status(200).sendFile(indexFile)
 })
 
 app.head('*', (req, res) => {
   console.log(req);
   logger.info(formatRequestLog(req))
-  res.end()
+  const indexFile = getRandomIndex(getRandomNum())
+  res.status(200).sendFile(indexFile)
 })
 
 app.put('*', (req, res) => {
   console.log(req);
   logger.info(formatRequestLog(req))
-  res.end()
+  const indexFile = getRandomIndex(getRandomNum())
+  res.status(200).sendFile(indexFile)
 })
 
 
