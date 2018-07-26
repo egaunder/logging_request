@@ -10,7 +10,7 @@ module.exports = (num) => `<!DOCTYPE html>
   <meta property="og:title" content="Combine GIFs with your favorite song clips ${num} - Gifnote" class="next-head">
   <meta property="og:description" content="Browse &amp; mix GIFs with Music from your favorite artists - share anywhere. Gifnote is your place for musical expressions."
     class="next-head">
-  <meta property="og:url" content="https://staging.gifnote.com/spy" class="next-head">
+  <meta property="og:url" content="https://staging.gifnote.com/spy/${num}" class="next-head">
   <meta property="og:type" content="website" class="next-head">
   <meta property="og:image" content="https://i.gifnote.co/gifnote-logo.png" class="next-head">
   <meta property="og:image:width" content="1200" class="next-head">
