@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+module.exports = (num) => `<!DOCTYPE html>
 <html>
 <head>
   <title class="next-head">Hello World 1</title>
@@ -7,7 +7,7 @@
   <meta name="description" content="Browse &amp; mix GIFs with Music from your favorite artists - share anywhere. Gifnote is your place for musical expressions."
     class="next-head">
   <meta name="apple-itunes-app" content="app-id=1276151989, affiliate-data=webapp" class="next-head">
-  <meta property="og:title" content="Combine GIFs with your favorite song clips - Gifnote" class="next-head">
+  <meta property="og:title" content="Combine GIFs with your favorite song clips ${num} - Gifnote" class="next-head">
   <meta property="og:description" content="Browse &amp; mix GIFs with Music from your favorite artists - share anywhere. Gifnote is your place for musical expressions."
     class="next-head">
   <meta property="og:url" content="https://gifnote.com" class="next-head">
@@ -708,6 +708,6 @@
   </style>
 </head>
 <body>
-  <h1>Hello World 1</h1>
+  <h1>Hello World ${num}</h1>
 </body>
-</html>
+</html>`

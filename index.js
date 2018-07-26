@@ -7,6 +7,9 @@ const rfs = require('rotating-file-stream')
 const path = require('path')
 const logger = require('./services/logger')
 
+const renderIndex1 = require('./public/index1')
+const renderIndex2 = require('./public/index2')
+const renderIndex3 = require('./public/index3')
 
 const app = express();
 app.use(bodyParser.json({ limit: '20mb' }))
@@ -32,42 +35,58 @@ const formatRequestLog = req => {
   return `{${headers}, ${ipAddress}, ${method}, ${body}, ${device}, ${url}, ${query}}`
 }
 
-const getRandomNum = () => {
-  const num = Math.floor(Math.random() * 4 + 1)
+const getRandomNum = (max) => {
+  const num = Math.floor(Math.random() * max + 1)
   return num
 }
 
-const getRandomIndex = (num) => {
-  const file = path.resolve(__dirname, './public/', `index${num}.html`)
-  return file
+const getRandomIndex = () => {
+  const randomPage = getRandomNum(3)
+  switch (randomPage) {
+    case 1:
+      return renderIndex1(getRandomNum(1000))
+      break;
+    case 2:
+      return renderIndex2(getRandomNum(1000))
+      break;
+    case 3:
+      return renderIndex3(getRandomNum(1000))
+      break;
+    default:
+      break;
+  }
 }
 
 app.post('*', (req, res) => {
   console.log(req);
   logger.info(formatRequestLog(req))
-  const indexFile = getRandomIndex(getRandomNum())
-  res.status(200).sendFile(indexFile)
+  const indexFile = getRandomIndex()
+  res.header('Cache-control', 'no-cache')
+  res.status(200).send(indexFile)
 })
 
 app.get('*', (req, res) => {
   console.log(req);
   logger.info(formatRequestLog(req))
-  const indexFile = getRandomIndex(getRandomNum())
-  res.status(200).sendFile(indexFile)
+  const indexFile = getRandomIndex()
+  res.header('Cache-control', 'no-cache')
+  res.status(200).send(indexFile)
 })
 
 app.head('*', (req, res) => {
   console.log(req);
   logger.info(formatRequestLog(req))
-  const indexFile = getRandomIndex(getRandomNum())
-  res.status(200).sendFile(indexFile)
+  const indexFile = getRandomIndex()
+  res.header('Cache-control', 'no-cache')
+  res.status(200).send(indexFile)
 })
 
 app.put('*', (req, res) => {
   console.log(req);
   logger.info(formatRequestLog(req))
-  const indexFile = getRandomIndex(getRandomNum())
-  res.status(200).sendFile(indexFile)
+  const indexFile = getRandomIndex()
+  res.header('Cache-control', 'no-cache')
+  res.status(200).send(indexFile)
 })
 
 

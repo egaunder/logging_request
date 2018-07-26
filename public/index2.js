@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+module.exports = (num) => `<!DOCTYPE html>
 <html>
 
 <head>
-  <title class="next-head">Hello World 4</title>
+  <title class="next-head">Hello World 2</title>
   <meta charset="utf-8" class="next-head">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" class="next-head">
   <meta name="description" content="Browse &amp; mix GIFs with Music from your favorite artists - share anywhere. Gifnote is your place for musical expressions."
     class="next-head">
   <meta name="apple-itunes-app" content="app-id=1276151989, affiliate-data=webapp" class="next-head">
-  <meta property="og:title" content="Combine GIFs with your favorite song clips - Gifnote" class="next-head">
+  <meta property="og:title" content="Combine GIFs with your favorite song clips ${num} - Gifnote" class="next-head">
   <meta property="og:description" content="Browse &amp; mix GIFs with Music from your favorite artists - share anywhere. Gifnote is your place for musical expressions."
     class="next-head">
   <meta property="og:url" content="https://gifnote.com" class="next-head">
@@ -710,7 +710,7 @@
 </head>
 
 <body>
-  <h1>Hello World 4</h1>
+  <h1>Hello World ${num}</h1>
 </body>
 
-</html>
+</html>`
