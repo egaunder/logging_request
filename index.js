@@ -37,22 +37,7 @@ const getRandomNum = (max) => {
   return num
 }
 
-const getRandomIndex = () => {
-  const randomPage = getRandomNum(3)
-  switch (randomPage) {
-    case 1:
-      return renderIndex(getRandomNum(1000))
-      break;
-    case 2:
-      return renderIndex(getRandomNum(1000))
-      break;
-    case 3:
-      return renderIndex(getRandomNum(1000))
-      break;
-    default:
-      break;
-  }
-}
+const getRandomIndex = () => renderIndex(getRandomNum(1000))
 
 app.post('*', (req, res) => {
   console.log(req);
